@@ -3,21 +3,28 @@
 
 <!-- ✨ Styles -->
 <style>
-  /* Highest chance to win: specific selector + !important */
-  header.careers-hero{
-    background: var(--bs-primary) !important;
-    color: #fff !important;
+  .careers-hero{
+    background: rgb(11, 176, 241);
+    color:#fff;
     transition: background .25s ease, color .25s ease;
   }
-  header.careers-hero *{
-    color: #fff !important;   /* force all text inside to white */
+  .careers-hero:hover{
+    background:lightskyblue;          /* hover = black */
+    color:#fff;
   }
-  header.careers-hero:hover{
-    background: #000 !important; /* hover = black */
-    color: #fff !important;
+  .careers-hero h1,
+  .careers-hero p{
+    color:#fff !important;    /* text white */
+  }
+  /* Optional: job list item hover black */
+  .list-group-item.list-group-item-action:hover{
+    background:#000;
+    color:#fff;
+  }
+  .list-group-item.list-group-item-action:hover .text-muted{
+    color:rgba(255,255,255,.75) !important;
   }
 </style>
-
 <header class="careers-hero py-5 border-bottom">
   <div class="container text-center">
     <h1 class="fw-bold mb-1">
