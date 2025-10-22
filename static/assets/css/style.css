@@ -1,0 +1,9 @@
+:root{--brand:#0ea5e9;--ink:#0b4a6f;} html{scroll-behavior:smooth} .bg-gradient-primary{background:linear-gradient(135deg,var(--brand),#38bdf8 50%,#7dd3fc)} .card{border-radius:18px} .rounded-4{border-radius:1rem!important} .avatar{width:84px;height:84px;border-radius:50%;object-fit:cover} .badge-soft{background:#e0f2fe;color:rgb(94, 7, 94)} footer a:hover{color:rgb(243, 104, 243)!important} .section-title{font-weight:700}
+.text-mute{
+    text-align: justify;             
+  text-justify: inter-word;         
+  line-height: 1.7;                
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto; 
+}

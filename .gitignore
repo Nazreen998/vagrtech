@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+instance/
+*.pyc
+*.log
+.env
+.env.*
+.env.local
+.vscode/
+venv/
+*.zip
+*.exe
+*.mp4

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- ✨ Styles -->
+<style>
+  /* Highest chance to win: specific selector + !important */
+  header.careers-hero{
+    background: var(--bs-primary) !important;
+    color: #fff !important;
+    transition: background .25s ease, color .25s ease;
+  }
+  header.careers-hero *{
+    color: #fff !important;   /* force all text inside to white */
+  }
+  header.careers-hero:hover{
+    background: #000 !important; /* hover = black */
+    color: #fff !important;
+  }
+</style>
+
+<header class="careers-hero py-5 border-bottom">
+  <div class="container text-center">
+    <h1 class="fw-bold mb-1">
+      Careers at {{ config.get('BRAND','VAGD TECHNOLOGY') }}
+    </h1>
+    <p class="mb-0">
+      Join our team of builders. We’re remote-friendly.
+    </p>
+  </div>
+</header>
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <h4 class="mb-3">Open Roles</h4>
+
+        <div class="list-group">
+          {% for job in jobs %}
+          <a href="#apply" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <span>
+              <strong>{{ job.title }}</strong>
+              <span class="text-muted small d-block">{{ job.location }} · {{ job.type }}</span>
+            </span>
+            <span class="badge text-bg-primary">{{ job.level }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 id="apply" class="mb-3">Quick Apply</h5>
+
+            <form method="POST" action="{{ url_for('apply') }}" enctype="multipart/form-data">
+              <div class="mb-3">
+                <input name="name" class="form-control" placeholder="Full name" required>
+              </div>
+
+              <div class="mb-3">
+                <input name="email" type="email" class="form-control" placeholder="Email" required>
+              </div>
+
+              <div class="mb-3">
+                <input name="role" class="form-control" placeholder="Role (e.g., Frontend Engineer)" required>
+              </div>
+
+              <!-- PDF upload field -->
+              <div class="mb-3">
+                <label class="form-label">Resume (PDF)</label>
+                <input name="resume" type="file" class="form-control" accept="application/pdf" required>
+                <div class="form-text">Only .pdf, max 5 MB</div>
+              </div>
+
+              {% if message %}
+              <div class="alert alert-success shadow-sm" role="alert">
+                {{ message|safe }}
+              </div>
+              {% endif %}
+
+              <div class="mb-3">
+                <textarea name="note" class="form-control" rows="4" placeholder="Short note"></textarea>
+              </div>
+
+              <button class="btn btn-primary w-100">Submit</button>
+            </form>
+
+            <p class="small text-muted mt-3 mb-0">We’ll get back within 5 business days.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% if message %}
+<div class="container"><div class="alert alert-success shadow-sm">{{ message|safe }}</div></div>
+{% endif %}
+
+{% endblock %}
